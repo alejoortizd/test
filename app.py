@@ -37,6 +37,7 @@ with model_graph.as_default():
         WEIGHT_MODELS = './models/weights.h5'
         cnn = tf.keras.models.load_model(MODELS_PATH)
         cnn.load_weights(WEIGHT_MODELS)
+    tf_session.close()
 #cnn._make_predict_function()
 print('Model loaded. Check http://127.0.0.1:5000/')
 #graph = tf.get_default_graph()
