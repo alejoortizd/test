@@ -28,9 +28,9 @@ graph = tf.get_default_graph()
 # Define a flask app
 app = Flask(__name__)
 
-model_graph = Graph()
+model_graph = tf.Graph()
 with model_graph.as_default():
-    tf_session = Session()
+    tf_session = tf.Session()
     with tf_session.as_default():
 # Model saved with Keras model.save()
         MODELS_PATH = './models/model.h5'
@@ -38,6 +38,7 @@ with model_graph.as_default():
         cnn = tf.keras.models.load_model(MODELS_PATH)
         cnn.load_weights(WEIGHT_MODELS)
     tf_session.close()
+model_graph.close()
 #cnn._make_predict_function()
 print('Model loaded. Check http://127.0.0.1:5000/')
 #graph = tf.get_default_graph()
